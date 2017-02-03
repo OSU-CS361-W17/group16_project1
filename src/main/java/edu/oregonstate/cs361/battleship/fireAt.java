@@ -34,9 +34,9 @@ public class fireAt {
         // grab the ship model
 
 
-        if(checkhits(hitpoint, P_Aircraft.getStart(), P_Aircraft.getEnd())){
+        if(checkhits(hitpoint, P_Aircraft.getStart(), P_Aircraft.getEnd()){
                 nModel.setHit();
-        }else if(checkhits(hitpoint, P_Battleship.getStart(), P_Battleship.getEnd())){
+        }else if(checkhits(hitpoint, P_Battleship.getStart(), P_Battleship.getEnd()){
 
         }
 
