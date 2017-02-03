@@ -15,6 +15,7 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static spark.Spark.awaitInitialization;
+
 import static spark.Spark.init;
 
 
@@ -44,6 +45,7 @@ class MainTest {
         BattleshipModel test = gson.fromJson(info, BattleshipModel.class);
 
         assertEquals(info, res.body);
+
     }
 
     @Test
