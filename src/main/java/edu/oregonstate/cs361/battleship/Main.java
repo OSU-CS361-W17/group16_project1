@@ -46,7 +46,7 @@ public class Main {
     //This function should accept an HTTP request and deseralize it into an actual Java object.
     private static BattleshipModel getModelFromReq(Request req){
         //http request, req is a spark request
-        string info = req.body();
+        String info = req.body();
 
         //deserialise it into a java object
         Gson gson = new Gson();
