@@ -22,11 +22,11 @@ public class Main {
 
     //This function should return a new model
     static String newModel() {
-        //roster for ships -- get current copy of BattleshipModel
-        BattleshipModel access00;
-        access00 = new BattleshipModel();
+        //roster for ships -- get current copy of NewModel class
+        NewModel access00;
+        access00 = new NewModel();
 
-        //assert that BattleshipModel copy isn't a dud
+        //assert that NewModel copy isn't a dud
         //flagged as always true by IntelliJ
         assert access00 != null;
 
