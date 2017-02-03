@@ -17,14 +17,28 @@ public class fireAt {
         i = 1;
         NewModel nModel = new NewModel();
         Point hitpoint =new Point(x,y);
-        Point Aircraftstart =new Point(nModel.getPlayerAircraftStart());
+        NewModel P_Aircraft = nModel.getPlayerAircraft();
+        NewModel C_Aircraft = nModel.getComputerAircraft();
+        NewModel P_Battleship = nModel.getPlayerBattleship();
+        NewModel C_Battleship = nModel.getComputerBattleship();
+        NewModel P_Cruiser = nModel.getPlayerCruiser();
+        NewModel C_Cruiser = nModel.getComputerCruiser();
+        NewModel P_Destroyer = nModel.getPlayerDestroyer();
+        NewModel C_Destroyer = nModel.getComputerDestroyer();
+        NewModel P_Sub = nModel.getPlayerSub();
+        NewModel C_Sub = nModel.getComputerSub();
+
+
+
 
         // grab the ship model
 
 
-            if(checkhits(hitpoint, startpoint, endpoint)){
+        if(checkhits(hitpoint, P_Aircraft.getStart(), P_Aircraft.getEnd())){
                 nModel.setHit();
-            }
+        }else if(checkhits(hitpoint, P_Battleship.getStart(), P_Battleship.getEnd())){
+
+        }
 
     }
 
