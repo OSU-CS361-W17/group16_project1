@@ -41,68 +41,45 @@ public class NewModel {
     }
 
     //SET FUNCTIONS
-    public void setStartPositionAcross(int shipID, int x){
+    public void setStartPosition(int shipID, int x, int y){
         if(shipID == 1){
             playerAircraft.setAcross(x);
-
-        }else if(shipID == 2){
-            playerBattleship.setAcross(x);
-
-        }else if(shipID == 3){
-            playerCruiser.setAcross(x);
-
-        }else if(shipID == 4){
-            playerDestroyer.setAcross(x);
-
-        }else if(shipID == 5){
-            playerSub.setAcross(x);
-
-        }else if(shipID == 6){
-            computerAircraft.setAcross(x);
-
-        }else if(shipID == 7){
-            computerBattleship.setAcross(x);
-
-        }else if(shipID == 8){
-            computerCruiser.setAcross(x);
-
-        }else if(shipID == 9){
-            computerDestroyer.setAcross(x);
-
-        }else if(shipID == 10){
-            computerSub.setAcross(x);
-        }
-    }
-
-    public void setStartPositionDown(int shipID, int y){
-        if(shipID == 1){
             playerAircraft.setDown(y);
 
         }else if(shipID == 2){
+            playerBattleship.setAcross(x);
             playerBattleship.setDown(y);
 
         }else if(shipID == 3){
+            playerCruiser.setAcross(x);
             playerCruiser.setDown(y);
 
         }else if(shipID == 4){
+            playerDestroyer.setAcross(x);
             playerDestroyer.setDown(y);
 
         }else if(shipID == 5){
+            playerSub.setAcross(x);
             playerSub.setDown(y);
 
         }else if(shipID == 6){
+            computerAircraft.setAcross(x);
             computerAircraft.setDown(y);
 
         }else if(shipID == 7){
+            computerBattleship.setAcross(x);
             computerBattleship.setDown(y);
 
         }else if(shipID == 8){
+            computerCruiser.setAcross(x);
             computerCruiser.setDown(y);
 
         }else if(shipID == 9){
+            computerDestroyer.setAcross(x);
             computerDestroyer.setDown(y);
 
-        }else if(shipID == 10) {
+        }else if(shipID == 10){
+            computerSub.setAcross(x);
             computerSub.setDown(y);
         }
     }
@@ -117,7 +94,7 @@ public class NewModel {
         miss = miss++;
     }
 
-    //get functions
+    //GET FUNCTIONS
     public int getHit(){
         return hit;
     }
@@ -126,14 +103,21 @@ public class NewModel {
         return miss;
     }
 
-    //GET COMMANDS FOR SHIP LENGTHS
     //Player Aircraft get functions
-    public int getPlayerAircraftStart(){
-        return playerAircraft.getStart();
+    public int getPlayerAircraftStartAcross(){
+        return playerAircraft.getStartAcross();
     }
 
-    public int getPlayerAircraftEnd(){
-        return playerAircraft.getEnd();
+    public int getPlayerAircraftStartDown(){
+        return playerAircraft.getStartDown();
+    }
+
+    public int getPlayerAircraftEndAcross(){
+        return playerAircraft.getEndAcross();
+    }
+
+    public int getPlayerAircraftEndDown(){
+        return playerAircraft.getEndDown();
     }
 
     public int getPlayerAircraftLength(){
@@ -141,12 +125,20 @@ public class NewModel {
     }
 
     //Player Battleship get functions
-    public int getPlayerBattleshipStart(){
-        return playerBattleship.getStart();
+    public int getPlayerBattleshipStartAcross(){
+        return playerBattleship.getStartAcross();
     }
 
-    public int getPlayerBattleshipEnd(){
-        return playerBattleship.getEnd();
+    public int getPlayerBattleshipStartDown(){
+        return playerBattleship.getStartDown();
+    }
+
+    public int getPlayerBattleshipEndAcross(){
+        return playerBattleship.getEndAcross();
+    }
+
+    public int getPlayerBattleshipEndDown(){
+        return playerBattleship.getEndDown();
     }
 
     public int getPlayerBattleshipLength(){
@@ -154,12 +146,20 @@ public class NewModel {
     }
 
     //Player Cruiser get functions
-    public int getPlayerCruiserStart(){
-        return playerCruiser.getStart();
+    public int getPlayerCruiserStartAcross(){
+        return playerCruiser.getStartAcross();
     }
 
-    public int getPlayerCruiserEnd(){
-        return playerCruiser.getEnd();
+    public int getPlayerCruiserStartDown(){
+        return playerCruiser.getStartDown();
+    }
+
+    public int getPlayerCruiserEndAcross(){
+        return playerCruiser.getEndAcross();
+    }
+
+    public int getPlayerCruiserEndDown(){
+        return playerCruiser.getEndDown();
     }
 
     public int getPlayerCruiserLength(){
@@ -167,12 +167,20 @@ public class NewModel {
     }
 
     //Player Destroyer get functions
-    public int getPlayerDestroyerStart(){
-        return playerDestroyer.getStart();
+    public int getPlayerDestroyerStartAcross(){
+        return playerDestroyer.getStartAcross();
     }
 
-    public int getPlayerDestroyerEnd(){
-        return playerCruiser.getEnd();
+    public int getPlayerDestroyerStartDown(){
+        return playerDestroyer.getStartDown();
+    }
+
+    public int getPlayerDestroyerEndAcross(){
+        return playerDestroyer.getEndAcross();
+    }
+
+    public int getPlayerDestroyerEndDown(){
+        return playerDestroyer.getEndDown();
     }
 
     public int getPlayerDestroyerLength(){
@@ -180,12 +188,20 @@ public class NewModel {
     }
 
     //Player Submarine get functions
-    public int getPlayerSubmarineStart(){
-        return playerSub.getStart();
+    public int getPlayerSubmarineStartAcross(){
+        return playerSub.getStartAcross();
     }
 
-    public int getPlayerSubmarineEnd(){
-        return playerSub.getEnd();
+    public int getPlayerSubmarineStartDown(){
+        return playerSub.getStartDown();
+    }
+
+    public int getPlayerSubmarineEndAcross(){
+        return playerSub.getEndAcross();
+    }
+
+    public int getPlayerSubmarineEndDown(){
+        return playerSub.getEndDown();
     }
 
     public int getPlayerSubmarineLength(){
@@ -193,12 +209,20 @@ public class NewModel {
     }
 
     //Computer Aircraft get functions
-    public int getComputerAircraftStart(){
-        return computerAircraft.getStart();
+    public int getComputerAircraftStartAcross(){
+        return computerAircraft.getStartAcross();
     }
 
-    public int getComputerAircraftEnd(){
-        return computerAircraft.getEnd();
+    public int getComputerAircraftStartDown(){
+        return computerAircraft.getStartDown();
+    }
+
+    public int getComputerAircraftEndAcross(){
+        return computerAircraft.getEndAcross();
+    }
+
+    public int getComputerAircraftEndDown(){
+        return computerAircraft.getEndDown();
     }
 
     public int getComputerAircraftLength(){
@@ -206,52 +230,90 @@ public class NewModel {
     }
 
     //Computer Battleship get functions
-    public int getComputerBattleshipStart(){
-        return computerBattleship.getStart();
+    public int getComputerBattleshipStartAcross(){
+        return computerBattleship.getStartAcross();
     }
 
-    public int getComputerBattleshipEnd(){
-        return computerBattleship.getEnd();
+    public int getComputerBattleshipStartDown(){
+        return computerBattleship.getStartDown();
+    }
+
+    public int getComputerBattleshipEndAcross(){
+        return computerBattleship.getEndAcross();
+    }
+
+    public int getComputerBattleshipEndDown(){
+        return computerBattleship.getEndDown();
     }
 
     public int getComputerBattleshipLength(){
         return computerBattleship.getLength();
     }
 
+
     //Computer Cruiser get functions
-    public int getComputerCruiserStart(){
-        return computerCruiser.getStart();
+    public int getComputerCruiserStartAcross(){
+        return computerCruiser.getStartAcross();
     }
 
-    public int getComputerCruiserEnd(){
-        return computerCruiser.getEnd();
+    public int getComputerCruiserStartDown(){
+        return computerCruiser.getStartDown();
     }
+
+    public int getComputerCruiserEndAcross(){
+        return computerCruiser.getEndAcross();
+    }
+
+    public int getComputerCruiserEndDown(){
+        return computerCruiser.getEndDown();
+    }
+
     public int getComputerCruiserLength(){
         return computerCruiser.getLength();
     }
 
+
     //Computer Destroyer get functions
-    public int getComputerDestroyerStart(){
-        return computerDestroyer.getStart();
+    public int getComputerDestroyerStartAcross(){
+        return computerDestroyer.getStartAcross();
     }
 
-    public int getComputerDestroyerEnd(){
-        return computerDestroyer.getEnd();
+    public int getComputerDestroyerStartDown(){
+        return computerDestroyer.getStartDown();
+    }
+
+    public int getComputerDestroyerEndAcross(){
+        return computerDestroyer.getEndAcross();
+    }
+
+    public int getComputerDestroyerEndDown(){
+        return computerDestroyer.getEndDown();
     }
 
     public int getComputerDestroyerLength(){
         return computerDestroyer.getLength();
     }
 
+
     //Computer Submarine get functions
-    public int getComputerSubmarineStart(){
-        return computerSub.getStart();
+    public int getComputerSubmarineStartAcross(){
+        return computerSub.getStartAcross();
     }
 
-    public int getComputerSubmarineEnd(){
-        return computerSub.getEnd();
+    public int getComputerSubmarineStartDown(){
+        return computerSub.getStartDown();
     }
-    public int getComputerSubLength(){
+
+    public int getComputerSubmarineEndAcross(){
+        return computerSub.getEndAcross();
+    }
+
+    public int getComputerSubmarineEndDown(){
+        return computerSub.getEndDown();
+    }
+
+    public int getComputerSubmarineLength(){
         return computerSub.getLength();
     }
+
 }
