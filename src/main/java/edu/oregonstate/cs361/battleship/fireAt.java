@@ -1,10 +1,11 @@
 package edu.oregonstate.cs361.battleship;
+
 /**
  * Created by Jiayu on 2017-01-30.
  */
 
 public class fireAt {
-    /** check if the fire is valid **/
+
 
 
     //get the fire point and the game state
@@ -16,6 +17,6 @@ public class fireAt {
 
 
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
     }
 }
