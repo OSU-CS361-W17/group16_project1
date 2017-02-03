@@ -1,5 +1,6 @@
 package edu.oregonstate.cs361.battleship;
 
+import com.google.gson.Gson;
 import spark.Request;
 import static spark.Spark.get;
 import static spark.Spark.post;
@@ -21,7 +22,24 @@ public class Main {
 
     //This function should return a new model
     static String newModel() {
-        return "MODEL";
+        //roster for ships -- get current copy of BattleshipModel
+        BattleshipModel access00;
+        access00 = new BattleshipModel();
+
+        //assert that BattleshipModel copy isn't a dud
+        //flagged as always true by IntelliJ
+        assert access00 != null;
+
+        //convert to json
+        Gson gson = new Gson();
+        String json00;
+        json00 = gson.toJson(access00);
+
+        //assert that json serialization isn't a dud
+        assert json00 != null;
+
+        //game is now updated with with current status via json
+        return json00;
     }
 
     //This function should accept an HTTP request and deseralize it into an actual Java object.
