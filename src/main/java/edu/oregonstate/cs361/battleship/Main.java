@@ -3,6 +3,8 @@ package edu.oregonstate.cs361.battleship;
 import com.google.gson.Gson;
 import spark.Request;
 
+import java.awt.*;
+
 import static spark.Spark.get;
 import static spark.Spark.post;
 import static spark.Spark.staticFiles;
@@ -177,7 +179,105 @@ public class Main {
 
     //Similar to placeShip, but with firing.
     private static String fireAt(Request req) {
-        return null;
+        int firerow, firecol;
+        BattleshipModel gamestate = getModelFromReq(req);
+        NewModel model = new NewModel();
+        firerow = Integer.parseInt(req.params(":row"));
+        firecol = Integer.parseInt(req.params(":col"));
+        Point firepoint = new Point(firerow, firecol);
+
+        //generate points for checkhits boolean
+        Point playerAircraftstarts = new Point(model.getPlayerAircraftStartAcross(),model.getPlayerAircraftStartDown());
+        Point playerAircraftends = new Point(model.getPlayerAircraftEndAcross(),model.getPlayerAircraftEndDown());
+
+        Point playerBattleshipstarts = new Point(model.getPlayerBattleshipStartAcross(),model.getPlayerBattleshipStartDown());
+        Point playerBattleshipends = new Point(model.getPlayerBattleshipEndAcross(),model.getPlayerBattleshipEndDown());
+
+        Point playerCruiserstarts = new Point(model.getPlayerCruiserStartAcross(),model.getPlayerCruiserStartDown());
+        Point playerCruiserends = new Point(model.getPlayerCruiserEndAcross(),model.getPlayerCruiserEndDown());
+
+        Point playerDestroyerstarts = new Point(model.getPlayerDestroyerStartAcross(),model.getPlayerDestroyerStartDown());
+        Point playerDestroyerends = new Point(model.getPlayerDestroyerEndAcross(),model.getPlayerDestroyerEndDown());
+
+        Point playerSubmarinestarts = new Point(model.getPlayerSubmarineStartAcross(),model.getPlayerSubmarineStartDown());
+        Point playerSubmarineends = new Point(model.getPlayerSubmarineEndAcross(),model.getPlayerSubmarineEndDown());
+
+        //AI points
+        Point ComputerAircraftstarts = new Point(model.getComputerAircraftStartAcross(),model.getComputerAircraftStartDown());
+        Point ComputerAircraftends = new Point(model.getComputerAircraftEndAcross(),model.getComputerAircraftEndDown());
+
+        Point ComputerBattleshipstarts = new Point(model.getComputerBattleshipStartAcross(),model.getComputerBattleshipStartDown());
+        Point ComputerBattleshipends = new Point(model.getComputerBattleshipEndAcross(),model.getComputerBattleshipEndDown());
+
+        Point ComputerCruiserstarts = new Point(model.getComputerCruiserStartAcross(),model.getComputerCruiserStartDown());
+        Point ComputerCruiserends = new Point(model.getComputerCruiserEndAcross(),model.getComputerCruiserEndDown());
+
+        Point ComputerDestroyerstarts = new Point(model.getComputerDestroyerStartAcross(),model.getComputerDestroyerStartDown());
+        Point ComputerDestroyerends = new Point(model.getComputerDestroyerEndAcross(),model.getComputerDestroyerEndDown());
+
+        Point ComputerSubmarinestarts = new Point(model.getComputerSubmarineStartAcross(),model.getComputerSubmarineStartDown());
+        Point ComputerSubmarineends = new Point(model.getComputerSubmarineEndAcross(),model.getComputerSubmarineEndDown());
+
+        //call the boolean to check if it hits or misses to update player_hit or player_miss
+        if(checkhits(firepoint,playerAircraftstarts , playerAircraftends)){
+            model.setplayerHit();
+            model.getplayerHit();
+        }else if(checkhits(firepoint, playerBattleshipstarts, playerBattleshipends)){
+            model.setplayerHit();
+            model.getplayerHit();
+        }else if(checkhits(firepoint, playerCruiserstarts, playerCruiserends)){
+            model.setplayerHit();
+            model.getplayerHit();
+        }else if(checkhits(firepoint, playerDestroyerstarts, playerDestroyerends)){
+            model.setplayerHit();
+            model.getplayerHit();
+        }else if(checkhits(firepoint, playerSubmarinestarts, playerSubmarineends)){
+            model.setplayerHit();
+            model.getplayerHit();
+        }else
+            model.setplayerMiss();
+            model.getplayerMiss();
+
+
+        //AI turn:
+        Point AIfire = new Point(2, 2);
+        //call the boolean to check if it hits or misses to update AI_hit or AI_miss
+        if(checkhits(firepoint,ComputerAircraftstarts , ComputerAircraftends)){
+            model.setAIHit();
+            model.getAIHit();
+        }else if(checkhits(firepoint, ComputerBattleshipstarts, ComputerBattleshipends)){
+            model.setAIHit();
+            model.getAIHit();
+        }else if(checkhits(firepoint, ComputerCruiserstarts, ComputerCruiserends)){
+            model.setAIHit();
+            model.getAIHit();
+        }else if(checkhits(firepoint, ComputerDestroyerstarts, ComputerDestroyerends)){
+            model.setAIHit();
+            model.getAIHit();
+        }else if(checkhits(firepoint, ComputerSubmarinestarts, ComputerSubmarineends)){
+            model.setAIHit();
+            model.getAIHit();
+        }else
+            model.setAIMiss();
+            model.getAIMiss();
+
+        return "hit";
     }
 
+    public static boolean checkhits(Point thisshot, Point starts, Point ends){
+        boolean missing = false;
+        if (thisshot.x == starts.x ){
+            if (thisshot.y <= ends.y && thisshot.y >= starts.y){
+                return true;
+            }
+        }else if(thisshot.y == starts.y){
+            if (thisshot.x <= ends.x && thisshot.x >= starts.x) {
+                return true;
+            }
+        }
+        return missing;
+    }
+
+
 }
+
