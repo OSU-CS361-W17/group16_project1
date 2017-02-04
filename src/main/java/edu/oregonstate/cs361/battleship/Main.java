@@ -60,9 +60,9 @@ public class Main {
     //This controller should take a json object from the front end, and place the ship as requested, and then return the object.
     private static String placeShip(Request req) {
         int startRow, startCol, endRow, endCol;
-        int shipLength = 0;
+        int shipLength;
         int idNum = 0;
-        String orientation;
+        String orientation = "";
         NewModel model= new NewModel();
 
         //Get the model from and turn it into a java object
@@ -75,66 +75,104 @@ public class Main {
         //Get starting col of ship requested
         startCol = Integer.parseInt(req.params(":col"));
         //Get the orientation of the ship requested
-        orientation = req.params(":id");
+        orientation = req.params(":orientation");
 
-        //Check if ship is a Submarine, if true store the length associated with it
-        if(shipId == "submarine") {
-            shipLength = 3;
-            idNum = 5;
-        }
-        //Check if ship is a Destroyer, if true store the length associated with it
-        if(shipId == "destroyer") {
-            shipLength = 2;
-            idNum = 4;
-        }
-        //Check if ship is a Cruiser, if true store the length associated with it
-        if(shipId == "cruiser") {
-            shipLength = 3;
-            idNum = 3;
-        }
-        //Check if ship is a Battleship, if true store the length associated with it
-        if(shipId == "battleship") {
-            shipLength = 4;
-            idNum = 2;
-        }
-        //Check if ship is a Aircraft Carrier, if true store the length associated with it
-        if(shipId == "aircraftCarrier") {
-            shipLength = 5;
-            idNum = 1;
-        }
+        shipLength = getShipLength(shipId);
+        idNum = getIdNum(shipId);
+        System.out.println("ID: " + shipId);
+        System.out.println(orientation);
+        System.out.println("length: " + shipLength);
 
         //if orientation is vertical, add ship length to starting row to get ending row
-        if(orientation == "vertical") {
-            endRow = startRow + shipLength;
+        if(orientation.equals("vertical")) {
+            endRow = (startRow + shipLength);
             endCol = startCol;
 
-            //check if ending row and col are within game board(10x10)
+            System.out.println(startRow);
+            System.out.println(startCol);
+
+            System.out.println(endRow);
+            System.out.println(endCol);
+
+            //Check if ending row and col are within game board(10x10)
             if(endRow <= 10 || endCol <= 10) {
                 //place ship across
-                model.setStartPositionAcross(idNum, startRow);//
+                model.setStartPosition(idNum, startCol, startRow);
             }
             else
             {
-                return "Invaild";
+                return "Invalid";
             }
         }
-        //otherwise assume horizontal, add ship length to starting column to get ending column
-        else {
+        //Check if horizontal, add ship length to starting column to get ending column
+        else if(orientation.equals("horizontal")) {
             endRow = startRow;
             endCol = startCol + shipLength;
 
             //check if ending row and col are within game board(10x10)
             if(endRow <= 10 || endCol <= 10) {
                 //place ship downwards
-                model.setStartPositionDown(idNum, startCol);
+                model.setStartPosition(idNum, startCol, startRow);
             }
             else
             {
-                return "Invaild";
+                return "Invalid";
             }
         }
 
+        //
         return "SHIP";
+    }
+
+    public static int getShipLength(String shipId){
+        int shipLength = 0;
+        //Check if ship is a Submarine, if true store the length associated with it
+        if(shipId.equals("submarine")){
+            shipLength = 3;
+        }
+        //Check if ship is a Destroyer, if true store the length associated with it
+        if(shipId.equals("destroyer")){
+            shipLength = 2;
+        }
+        //Check if ship is a Cruiser, if true store the length associated with it
+        if(shipId.equals("cruiser")) {
+            shipLength = 3;
+        }
+        //Check if ship is a Battleship, if true store the length associated with it
+        if(shipId.equals("battleship")) {
+            shipLength = 4;
+        }
+        //Check if ship is a Aircraft Carrier, if true store the length associated with it
+        if(shipId.equals("aircraftCarrier")) {
+            shipLength = 5;
+        }
+        System.out.println("length: " + shipLength);
+        return shipLength;
+    }
+
+    public static int getIdNum(String shipId) {
+        int idNum = 0;
+        //Check if ship is a Submarine, if true store the length associated with it
+        if(shipId == "submarine") {
+            idNum = 5;
+        }
+        //Check if ship is a Destroyer, if true store the length associated with it
+        if(shipId == "destroyer") {
+            idNum = 4;
+        }
+        //Check if ship is a Cruiser, if true store the length associated with it
+        if(shipId == "cruiser") {
+            idNum = 3;
+        }
+        //Check if ship is a Battleship, if true store the length associated with it
+        if(shipId == "battleship") {
+            idNum = 2;
+        }
+        //Check if ship is a Aircraft Carrier, if true store the length associated with it
+        if(shipId == "aircraftCarrier") {
+            idNum = 1;
+        }
+        return idNum;
     }
 
     //Similar to placeShip, but with firing.
