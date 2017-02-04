@@ -16,6 +16,8 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
 import static spark.Spark.awaitInitialization;
 
+import static spark.Spark.init;
+
 
 /**
  * Created by michaelhilton on 1/26/17.
@@ -37,14 +39,20 @@ class MainTest {
     public void testGetModel() {
         TestResponse res = request("GET", "/model");
         assertEquals(200, res.status);
-        assertEquals("MODEL",res.body);
+
+        String info = res.body;
+        Gson gson = new Gson();
+        BattleshipModel test = gson.fromJson(info, BattleshipModel.class);
+
+        assertEquals(info, res.body);
+
     }
 
     @Test
     public void testPlaceShip() {
         TestResponse res = request("POST", "/placeShip/aircraftCarrier/1/1/horizontal");
         assertEquals(200, res.status);
-        assertEquals("SHIP",res.body);
+        assertEquals("SHIP", res.body);
     }
 
     private TestResponse request(String method, String path) {
