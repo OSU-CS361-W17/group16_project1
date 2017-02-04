@@ -19,11 +19,8 @@ public class NewModel {
     private Vessel computerSub;
 
     //PRIVATE VARIABLES FOR SCORE
-    private int player_hit;
-    private int player_miss;
-    private int AI_hit;
-    private int AI_miss;
-
+    private int player_hit, player_miss;
+    private int AI_hit, AI_miss;
 
     //DEFAULT CONSTRUCTOR
     //Assign basic attributes to ships + default locations
@@ -44,48 +41,60 @@ public class NewModel {
     }
 
     //SET FUNCTIONS
-    public void setStartPosition(int shipID, int x, int y){
+    public String setStartPosition(int shipID, int x, int y){
         if(shipID == 1){
             playerAircraft.setAcross(x);
             playerAircraft.setDown(y);
+            return "placed";
 
         }else if(shipID == 2){
             playerBattleship.setAcross(x);
             playerBattleship.setDown(y);
+            return "placed";
 
         }else if(shipID == 3){
             playerCruiser.setAcross(x);
             playerCruiser.setDown(y);
+            return "placed";
 
         }else if(shipID == 4){
             playerDestroyer.setAcross(x);
             playerDestroyer.setDown(y);
+            return "placed";
 
         }else if(shipID == 5){
             playerSub.setAcross(x);
             playerSub.setDown(y);
+            return "placed";
 
         }else if(shipID == 6){
             computerAircraft.setAcross(x);
             computerAircraft.setDown(y);
+            return "placed";
 
         }else if(shipID == 7){
             computerBattleship.setAcross(x);
             computerBattleship.setDown(y);
+            return "placed";
 
         }else if(shipID == 8){
             computerCruiser.setAcross(x);
             computerCruiser.setDown(y);
+            return "placed";
 
         }else if(shipID == 9){
             computerDestroyer.setAcross(x);
             computerDestroyer.setDown(y);
+            return "placed";
 
-        }else if(shipID == 10){
+        }else if(shipID == 10) {
             computerSub.setAcross(x);
             computerSub.setDown(y);
+            return "placed";
         }
+        return "failed";
     }
+
 
     //When called player_hit tally will increment by one
     public void setplayerHit(){
@@ -338,3 +347,4 @@ public class NewModel {
     }
 
 }
+
