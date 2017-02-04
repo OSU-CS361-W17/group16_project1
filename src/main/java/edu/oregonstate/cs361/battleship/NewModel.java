@@ -19,8 +19,11 @@ public class NewModel {
     private Vessel computerSub;
 
     //PRIVATE VARIABLES FOR SCORE
-    private int hit;
-    private int miss;
+    private int player_hit;
+    private int player_miss;
+    private int AI_hit;
+    private int AI_miss;
+
 
     //DEFAULT CONSTRUCTOR
     //Assign basic attributes to ships + default locations
@@ -84,23 +87,41 @@ public class NewModel {
         }
     }
 
-    //When called hit tally will increment by one
-    public void setHit(){
-        hit = hit++;
+    //When called player_hit tally will increment by one
+    public void setplayerHit(){
+        player_hit += 1;
     }
 
-    //When called miss tally will increment by one
-    public void setMiss(){
-        miss = miss++;
+    //When called player_miss tally will increment by one
+    public void setplayerMiss(){
+        player_miss += 1;
+    }
+
+    //When called player_hit tally will increment by one
+    public void setAIHit(){
+        AI_hit += 1;
+    }
+
+    //When called player_miss tally will increment by one
+    public void setAIMiss(){
+        AI_miss += 1;
     }
 
     //GET FUNCTIONS
-    public int getHit(){
-        return hit;
+    public int getplayerHit(){
+        return player_hit;
     }
 
-    public int getMiss(){
-        return miss;
+    public int getplayerMiss(){
+        return player_miss;
+    }
+
+    public int getAIHit(){
+        return AI_hit;
+    }
+
+    public int getAIMiss(){
+        return AI_miss;
     }
 
     //Player Aircraft get functions
