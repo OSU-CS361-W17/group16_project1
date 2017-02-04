@@ -195,7 +195,30 @@ class MainTest {
         assertEquals(200, res.status);
         assertEquals("hit",res.body);
     }
-
+    @Test
+    public void fireat7(){
+        TestResponse res = request("POST", "/fire/3/4");
+        assertEquals(200, res.status);
+        assertEquals("hit",res.body);
+    }
+    @Test
+    public void fireat8(){
+        TestResponse res = request("POST", "/fire/3/5");
+        assertEquals(200, res.status);
+        assertEquals("hit",res.body);
+    }
+    @Test
+    public void fireat9(){
+        TestResponse res = request("POST", "/fire/9/5");
+        assertEquals(200, res.status);
+        assertEquals("hit",res.body);
+    }
+    @Test
+    public void fireat10(){
+        TestResponse res = request("POST", "/fire/3/10");
+        assertEquals(200, res.status);
+        assertEquals("hit",res.body);
+    }
 
 
     @Test
