@@ -76,36 +76,70 @@ public class NewModelTest {
     }
 
     @Test
-    public void testGetandSetHit() {
+    public void testGetandSetPlayerHit() {
         NewModel model = new NewModel();
 
-        model.setHit();
-        int result = model.getHit();
+        model.setplayerHit();
+        int result = model.getplayerHit();
         assertEquals(1, result);
 
-        model.setHit();
-        result = model.getHit();
+        model.setplayerHit();
+        result = model.getplayerHit();
         assertEquals(2, result);
 
-        model.setHit();
-        result = model.getHit();
+        model.setplayerHit();
+        result = model.getplayerHit();
         assertEquals(3, result);
     }
 
     @Test
-    public void testGetandSetMiss() {
+    public void testGetandSetPlayerMiss() {
         NewModel model = new NewModel();
 
-        model.setMiss();
-        int result = model.getMiss();
+        model.setplayerMiss();
+        int result = model.getplayerMiss();
         assertEquals(1, result);
 
-        model.setMiss();
-        result = model.getMiss();
+        model.setplayerMiss();
+        result = model.getplayerMiss();
         assertEquals(2, result);
 
-        model.setMiss();
-        result = model.getMiss();
+        model.setplayerMiss();
+        result = model.getplayerMiss();
+        assertEquals(3, result);
+    }
+
+    @Test
+    public void testGetandSetAIMiss() {
+        NewModel model = new NewModel();
+
+        model.setAIMiss();
+        int result = model.getAIMiss();
+        assertEquals(1, result);
+
+        model.setAIMiss();
+        result = model.getAIMiss();
+        assertEquals(2, result);
+
+        model.setAIMiss();
+        result = model.getAIMiss();
+        assertEquals(3, result);
+    }
+
+    @Test
+    public void testGetandSetAIHit() {
+        NewModel model = new NewModel();
+
+        model.setAIHit();
+        int result = model.getAIHit();
+        assertEquals(1, result);
+
+        model.setAIHit();
+        result = model.getAIHit();
+        assertEquals(2, result);
+
+        model.setAIHit();
+        result = model.getAIHit();
         assertEquals(3, result);
     }
 }
