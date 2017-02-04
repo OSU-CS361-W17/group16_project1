@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import spark.Spark;
 import spark.utils.IOUtils;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -15,8 +16,6 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static spark.Spark.awaitInitialization;
-
-import static spark.Spark.init;
 
 
 /**
@@ -146,6 +145,78 @@ class MainTest {
         String ship = "aircraftCarrier";
         int result = Main.getIdNum(ship);
         assertEquals(1, result);
+    }
+    @Test
+    public void testcheckfirepoint() {
+        TestResponse res = request("POST", "/fire/7/7");
+        int firerow = 7, firecol = 7;
+        Point firepoint = new Point(firerow,firecol);
+        Point x = new Point(7,7);
+        assertEquals(200, res.status);
+        assertEquals(x, firepoint);
+    }
+    @Test
+    public void fireat1(){
+        TestResponse res = request("POST", "/fire/13/7");
+        assertEquals(200, res.status);
+        assertEquals("hit",res.body);
+    }
+    @Test
+    public void fireat2(){
+        TestResponse res = request("POST", "/fire/9/7");
+        assertEquals(200, res.status);
+        assertEquals("hit",res.body);
+    }
+
+    @Test
+    public void fireat3(){
+        TestResponse res = request("POST", "/fire/5/7");
+        assertEquals(200, res.status);
+        assertEquals("hit",res.body);
+    }
+
+    @Test
+    public void fireat4(){
+        TestResponse res = request("POST", "/fire/4/7");
+        assertEquals(200, res.status);
+        assertEquals("hit",res.body);
+    }
+
+    @Test
+    public void fireat5(){
+        TestResponse res = request("POST", "/fire/1/0");
+        assertEquals(200, res.status);
+        assertEquals("hit",res.body);
+    }
+
+    @Test
+    public void fireat6(){
+        TestResponse res = request("POST", "/fire/19/7");
+        assertEquals(200, res.status);
+        assertEquals("hit",res.body);
+    }
+
+
+
+    @Test
+    public void testcheckshots1(){
+        boolean notworking = false;
+        boolean val = false;
+            Point thisshot = new Point(1,2);
+            Point starts = new Point(2,3);
+            Point ends = new Point(2,5);
+            val = Main.checkhits(thisshot, starts, ends);
+        assertEquals(notworking, val);
+    }
+    @Test
+    public void testcheckshots2(){
+        boolean notworking = false;
+        boolean val = false;
+        Point thisshot = new Point(13,2);
+        Point starts = new Point(2,3);
+        Point ends = new Point(2,5);
+        val = Main.checkhits(thisshot, starts, ends);
+        assertEquals(notworking, val);
     }
 
     private TestResponse request(String method, String path) {
