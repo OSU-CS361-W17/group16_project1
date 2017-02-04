@@ -1,6 +1,8 @@
 package edu.oregonstate.cs361.battleship;
 
+import com.google.gson.Gson;
 import spark.Request;
+
 import static spark.Spark.get;
 import static spark.Spark.post;
 import static spark.Spark.staticFiles;
@@ -20,18 +22,44 @@ public class Main {
     }
 
     //This function should return a new model
-    private static String newModel() {
-        return null;
+    static String newModel() {
+
+        //roster for ships -- get current copy of NewModel class
+        NewModel access00;
+        access00 = new NewModel();
+
+        //assert that NewModel copy isn't a dud
+
+        //flagged as always true by IntelliJ
+        assert access00 != null;
+
+        //convert to json
+        Gson gson = new Gson();
+        String json00;
+        json00 = gson.toJson(access00);
+
+        //assert that json serialization isn't a dud
+        assert json00 != null;
+
+        //game is now updated with with current status via json
+        return json00;
     }
 
     //This function should accept an HTTP request and deseralize it into an actual Java object.
     private static BattleshipModel getModelFromReq(Request req){
-        return null;
+        //http request, req is a spark request
+        String info = req.body();
+
+        //deserialise it into a java object
+        Gson gson = new Gson();
+        BattleshipModel mod = gson.fromJson(info, BattleshipModel.class);
+
+        return mod;
     }
 
     //This controller should take a json object from the front end, and place the ship as requested, and then return the object.
     private static String placeShip(Request req) {
-        return null;
+        return "SHIP";
     }
 
     //Similar to placeShip, but with firing.
